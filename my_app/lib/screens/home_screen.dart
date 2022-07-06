@@ -55,6 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class CustomFloatingActions extends StatelessWidget {
+  //separamos el widget para una mejor lectura del codigo e implementamos las funciones con argumentos para realizar las operaciones
   final Function increaseFn;
 
   const CustomFloatingActions({
@@ -69,7 +70,10 @@ class CustomFloatingActions extends StatelessWidget {
       children: [
         FloatingActionButton(
           child: const Icon(Icons.exposure_plus_1_outlined),
-          onPressed: () => increaseFn(1),
+          onPressed: () {
+            //Funcion equitativa a =>
+            increaseFn(1);
+          },
         ),
         FloatingActionButton(
           child: const Icon(Icons.exposure_outlined),
