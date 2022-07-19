@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/screens/listview_screen2.dart';
+import 'package:my_app/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       //home: HomeScreen(),
-      home: Listview2Screen(),
+      home: SplashScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
