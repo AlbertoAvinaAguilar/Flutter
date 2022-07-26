@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_app/screens/screens.dart';
+import 'package:my_app/router/app_routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,12 +14,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       //home: HomeScreen(),
       //home: const SplashScreen(),
-      initialRoute: 'inicioSplash',
-      routes: {
-        'inicioSplash': (BuildContext context) => const SplashScreen(),
-        'homeLogin': (BuildContext context) => const HomeScreen(),
-        'registroCuenta': (BuildContext context) => const RegistroCuenta(),
-      },
+      initialRoute: AppRoutes.initialRoute,
+      routes: AppRoutes.routes,
       debugShowCheckedModeBanner: false,
     );
   }
