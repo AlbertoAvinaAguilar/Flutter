@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
+import 'screens/listview_screen.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -12,18 +14,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //const mensaje = 'Hola Mundo'; //Creacion de una variable
 
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Startup Name Generator',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Startup Name Generator'),
-        ),
-        body: const Center(
-          //child: Text(mensaje), //pasamos la variable
-          child:
-              RandomWords(), //Utilizamos un statefulwidget que obtiene una palabra en ingles aleatoria
-        ),
-      ),
+      home: ListViewScreen(),
+
+      // Scaffold(
+      //   appBar: AppBar(
+      //     title: const Text('Startup Name Generator'),
+      //   ),
+      //   body: const Center(
+      //     //child: Text(mensaje), //pasamos la variable
+      //     child:
+      //         RandomWords(), //Utilizamos un statefulwidget que obtiene una palabra en ingles aleatoria
+      //   ),
+      // ),
     );
   }
 }
@@ -54,6 +58,8 @@ class _RandomWordsState extends State<RandomWords> {
           _suggestions.addAll(generateWordPairs().take(10));
         }
         return ListTile(
+          leading: const Icon(Icons
+              .access_time_outlined), //tambien se puede agregar iconos a el leading
           title: Text(
             _suggestions[index].asPascalCase,
             style: _biggerFont,
