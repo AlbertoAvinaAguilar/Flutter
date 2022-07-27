@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
-import 'screens/listview_screen.dart';
+import 'screens/listview_builder_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
 
     return const MaterialApp(
       title: 'Startup Name Generator',
-      home: ListViewScreen(),
+      home: ListViewBuilderScreen(),
 
       // Scaffold(
       //   appBar: AppBar(
@@ -43,6 +43,8 @@ class _RandomWordsState extends State<RandomWords> {
   //_ indica privacidad para el solo uso en la clase
   final _suggestions = <WordPair>[]; // NEW
   final _biggerFont = const TextStyle(fontSize: 18); // NEW
+  final _saved = <WordPair>{};
+
   @override
   Widget build(BuildContext context) {
     //final wordPair = WordPair.random(); // NEW
