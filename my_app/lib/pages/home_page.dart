@@ -8,8 +8,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Lista de usuarios")),
-      body: const Center(
-        child: CustomText(),
+      body: Center(
+        child: Container(width: 200, height: 100, color: Colors.black),
       ),
     );
   }
