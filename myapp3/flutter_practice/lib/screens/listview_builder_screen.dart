@@ -36,6 +36,10 @@ class ListViewBuilderScreen extends StatelessWidget {
                   title: Text(options[index]),
                   //trailing va un icono al final del title
                   trailing: const Icon(Icons.arrow_forward_ios_rounded),
+                  onTap: () {
+                    final game = options[index];
+                    print(game);
+                  },
                 ),
             separatorBuilder: (_, __) => const Divider(),
             itemCount: options.length));
