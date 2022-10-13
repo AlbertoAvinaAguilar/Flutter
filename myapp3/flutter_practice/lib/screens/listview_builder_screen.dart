@@ -19,6 +19,8 @@ class ListViewBuilderScreen extends StatelessWidget {
     '15'
   ]; //Lista de string
 
+  //final _saved = <WordPair>{};
+
   const ListViewBuilderScreen({Key? key}) : super(key: key);
 
   @override
