@@ -14,20 +14,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //const mensaje = 'Hola Mundo'; //Creacion de una variable
 
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Startup Name Generator',
-      home: ListViewBuilderScreen(),
+      //home: ListViewBuilderScreen(),
 
-      // Scaffold(
-      //   appBar: AppBar(
-      //     title: const Text('Startup Name Generator'),
-      //   ),
-      //   body: const Center(
-      //     //child: Text(mensaje), //pasamos la variable
-      //     child:
-      //         RandomWords(), //Utilizamos un statefulwidget que obtiene una palabra en ingles aleatoria
-      //   ),
-      // ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Startup Name Generator'),
+        ),
+        body: const Center(
+          //child: Text(mensaje), //pasamos la variable
+          child:
+              RandomWords(), //Utilizamos un statefulwidget que obtiene una palabra en ingles aleatoria
+        ),
+      ),
     );
   }
 }
@@ -59,13 +59,27 @@ class _RandomWordsState extends State<RandomWords> {
         if (index >= _suggestions.length) {
           _suggestions.addAll(generateWordPairs().take(10));
         }
+
+        final alreadySaved = _saved.contains(_suggestions[index]);
         return ListTile(
-          leading: const Icon(Icons
-              .access_time_outlined), //tambien se puede agregar iconos a el leading
           title: Text(
             _suggestions[index].asPascalCase,
             style: _biggerFont,
           ),
+          trailing: Icon(
+            alreadySaved ? Icons.favorite : Icons.favorite_border,
+            color: alreadySaved ? Colors.red : null,
+            semanticLabel: alreadySaved ? 'Remove from saved' : 'Save',
+          ),
+          onTap: () {
+            setState(() {
+              if (alreadySaved) {
+                _saved.remove(_suggestions[index]);
+              } else {
+                _saved.add(_suggestions[index]);
+              }
+            });
+          },
         );
       },
     );
