@@ -16,12 +16,14 @@ class HomePage extends StatelessWidget {
         ),
         Text(
             style: const TextStyle(
-                fontWeight: FontWeight.bold,
+                fontFamily: "Roboto-Bold",
+                // fontWeight: FontWeight.bold,
                 fontSize: 22,
                 color: Color.fromRGBO(255, 251, 251, .90)),
             titulo),
         Text(
             style: const TextStyle(
+                fontFamily: "Roboto-Bold",
                 fontWeight: FontWeight.bold,
                 fontSize: 12,
                 color: Color.fromRGBO(240, 240, 240, .89)),
