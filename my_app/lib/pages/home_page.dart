@@ -1,44 +1,45 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Lista de usuarios")),
-      body: Center(
-        child: Container(width: 200, height: 100, color: Colors.black),
-      ),
+    return MaterialApp(
+      title: 'RCE',
+      home: Scaffold(
+          body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+          image: AssetImage("assets/login/fondo.jpg"),
+          fit: BoxFit.cover,
+        )),
+        // child: Stack(
+        //   alignment: Alignment.center,
+        //   children: [
+        //     Container(
+        //       alignment: Alignment.center,
+        //       color: Color.fromARGB(133, 238, 239, 240),
+        //       width: double.infinity,
+        //       height: 100,
+        //     ),
+        //     Center(
+        //       child: Column(
+        //         mainAxisAlignment: MainAxisAlignment.center,
+        //         children: const [
+        //           Text(
+        //               style: TextStyle(
+        //                   fontSize: 40,
+        //                   color: Color.fromARGB(255, 51, 51, 51)),
+        //               "Bienvenidos"),
+        //         ],
+        //       ),
+        //     ),
+        //   ],
+        // )
+      )),
     );
-  }
-}
-
-class CustomText extends StatelessWidget {
-  const CustomText({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Text("Bienvenidos aQUI",
-        textAlign: TextAlign.center,
-        style: TextStyle(
-            color: Colors.amberAccent,
-            backgroundColor: Colors.black,
-            fontSize: 25.0,
-            fontWeight: FontWeight.w800,
-            fontStyle: FontStyle.italic,
-            letterSpacing: 5.0,
-            wordSpacing: 5.0,
-            textBaseline: TextBaseline.alphabetic,
-            height: 10.0,
-            shadows: [
-              Shadow(
-                  color: Color.fromARGB(255, 223, 223, 223),
-                  blurRadius: 16,
-                  offset: Offset(1, 1))
-            ]));
   }
 }
