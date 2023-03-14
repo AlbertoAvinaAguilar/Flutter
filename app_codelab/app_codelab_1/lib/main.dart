@@ -33,10 +33,21 @@ class MyAppState extends ChangeNotifier {
   var current = WordPair.random(); //variable de tipo texto
   int numero = 0; //variable de tipo numero
 
+  var favorites = <WordPair>[]; //Lista de tipo WordPair
+
   void getNext() {
     //Metodo encargado de generar otra palabra aleatoria
     current = WordPair.random();
     notifyListeners(); //Metodo de ChangeNotifier que cambia el estado de la aplicacion
+  }
+
+  void toggleFavorite() {
+    if (favorites.contains(current)) {
+      favorites.remove(current);
+    } else {
+      favorites.add(current);
+    }
+    notifyListeners();
   }
 }
 
@@ -57,12 +68,24 @@ class MyHomePage extends StatelessWidget {
           children: [
             const Text('A random idea:'),
             BigCrad(pair: pair),
-            ElevatedButton(
-              onPressed: () {
-                appState.getNext();
-                print('button pressed!');
-              },
-              child: Text('Next'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    appState.getNext();
+                    print('button pressed!');
+                  },
+                  child: Text('Next'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    appState.getNext();
+                    print('button pressed!');
+                  },
+                  child: Text('Next'),
+                )
+              ],
             ),
           ],
         ),
