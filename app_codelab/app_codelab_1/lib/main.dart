@@ -1,4 +1,6 @@
+import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,61 +9,94 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    //Esto permite que cualquier widget en la aplicación obtenga el estado mediante el ChangeNotifierProvider
+    return ChangeNotifierProvider(
+      create: (context) => MyAppState(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Namer App',
+        theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+        ),
+        home: MyHomePage(),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+//puede notificar a otros sobre sus propios cambios
+class MyAppState extends ChangeNotifier {
+  //Aqui va la logica empresarial o de negocio
+  var current = WordPair.random(); //variable de tipo texto
+  int numero = 0; //variable de tipo numero
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  void getNext() {
+    //Metodo encargado de generar otra palabra aleatoria
+    current = WordPair.random();
+    notifyListeners(); //Metodo de ChangeNotifier que cambia el estado de la aplicacion
+  }
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    //build() método que se llama automáticamente cada vez que cambian las circunstancias del widget
+    var appState = context.watch<
+        MyAppState>(); //Instancia de el ChangeNotifier provider, mediante watch realiza un seguimiento de locas cambios del estado
+    var pair = appState.current;
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+          children: [
+            const Text('A random idea:'),
+            BigCrad(pair: pair),
+            ElevatedButton(
+              onPressed: () {
+                appState.getNext();
+                print('button pressed!');
+              },
+              child: Text('Next'),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class BigCrad extends StatelessWidget {
+  const BigCrad({
+    super.key,
+    required this.pair,
+  });
+
+  final WordPair pair;
+
+  @override
+  Widget build(BuildContext context) {
+    var theme = Theme.of(context); //Tema principal accedemos a el
+
+    var style = theme.textTheme.displayMedium!.copyWith(
+      color: theme.colorScheme.onPrimary,
+    );
+
+    return Card(
+      color:
+          theme.colorScheme.primary, //Asignamos el color de este tema a la card
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Text(
+          pair.asLowerCase,
+          style: style,
+        ),
+      ),
     );
   }
 }
