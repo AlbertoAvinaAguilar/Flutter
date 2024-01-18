@@ -11,7 +11,7 @@ class ChatScreen extends StatelessWidget {
           padding: EdgeInsets.all(1.0),
           child: CircleAvatar(
             backgroundImage: NetworkImage(
-                'https://scontent.fbjx1-1.fna.fbcdn.net/v/t39.30808-6/363302007_1820530701674176_522681924158733083_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=9534ce&_nc_eui2=AeHki6xUDINc6Zbqgfjsa4i030DX4BNRTozfQNfgE1FOjJZIoSREnZuUV2bnwAwVtispqhNIw6xmFeCUvh6nk5-x&_nc_ohc=BDktmMlnHjkAX8e9niW&_nc_ht=scontent.fbjx1-1.fna&oh=00_AfCzujQ9s1uF8uY-s99CXQP26mK9kuc0XL9D9Sw_gaVY7g&oe=65A5F07F'),
+                'https://media.revistavanityfair.es/photos/60e8406c70839211f5444c64/master/w_1600%2Cc_limit/151864.jpg'),
           ),
         ),
         title: const Text("Mayte <3"),

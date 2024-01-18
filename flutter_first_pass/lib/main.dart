@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_first_pass/config/theme/app_theme.dart';
+import 'package:flutter_first_pass/presentation/screens/chat/chat_screen.dart';
 import 'package:flutter_first_pass/presentation/screens/counter/counter_functions_screen.dart';
 // import 'package:flutter_first_pass/presentation/screens/counter/counter_screen.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
       //   useMaterial3: true, //Uso de material
       // ),
-      home: const CounterFunctionsScreen(),
+      home: const ChatScreen(),
     );
   }
 }
