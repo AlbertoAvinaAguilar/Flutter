@@ -9,6 +9,7 @@ class CounterScreen extends StatefulWidget {
 
 class _CounterScreenState extends State<CounterScreen> {
  int clickCounter = 0;
+ String wordClick = "cliks";
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +22,8 @@ class _CounterScreenState extends State<CounterScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'Counter Screen',
+            Text(
+              wordClick,
             ),
             Text(
               '$clickCounter',
@@ -34,8 +35,9 @@ class _CounterScreenState extends State<CounterScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-          
+
           clickCounter ++;
+          clickCounter==1?wordClick="click":wordClick="clicks";
           setState(() {
             
           });
