@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_first_pass/config/theme/app_theme.dart';
 import 'package:flutter_first_pass/presentation/screens/chat/chat_screen.dart';
-import 'package:flutter_first_pass/presentation/screens/counter/counter_functions_screen.dart';
+// import 'package:flutter_first_pass/presentation/screens/counter/counter_functions_screen.dart';
 // import 'package:flutter_first_pass/presentation/screens/counter/counter_screen.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false, //Quitar etiqueta modo de desarrollo
-      theme: AppTheme(selectColor: 2).theme(),
+      theme: AppTheme(selectColor: 0).theme(),
       title: 'Flutter Demo',
       // theme: ThemeData(
       //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
