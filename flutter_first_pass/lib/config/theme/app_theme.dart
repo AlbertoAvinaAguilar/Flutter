@@ -13,7 +13,7 @@ class AppTheme {
   final int selectColor;
 
   AppTheme({this.selectColor = 0})
-      : assert(selectColor >= 0 && selectColor <= _colorThemes.length - 1,
+      : assert(selectColor >= 0 && selectColor <= _colorThemes.length - 1,    //assert da un error si la expresión es falsa y detiene su ejecución
             'Color puede ser solamente entre 0 y ${_colorThemes.length - 1}');
 
   //Tema dinamico

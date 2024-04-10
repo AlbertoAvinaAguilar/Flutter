@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_first_pass/domain/entities/message.dart';
 
 class HerMessageBubble
  extends StatelessWidget {
-  const HerMessageBubble
-  ({super.key});
+
+  final Message message;
+
+  const HerMessageBubble({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +18,13 @@ class HerMessageBubble
       children: [
         Container(
           decoration: BoxDecoration(color: colors.secondary, borderRadius: BorderRadius.circular(20)),
-        child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30,vertical: 10),
-          child: Text("Tu lo eresss", style: TextStyle(color: Colors.white),),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
+          child: Text(message.text, style: const TextStyle(color: Colors.white),),
         )
         ),
         const SizedBox(height: 5),
-        _ImageBubble(),
+        _ImageBubble(message.imageUrl! ), //el atributo es opcional colocamos ! para indicar que por este caso siempre va ir la imagen
         const SizedBox(height: 10),
       ],
     );
@@ -29,11 +32,16 @@ class HerMessageBubble
 }
 
 class _ImageBubble extends StatelessWidget {
+
+  final String  imageUrl;
+
+  const _ImageBubble(this.imageUrl);
+
   @override
   Widget build(BuildContext context) {
      final size = MediaQuery.of(context).size;
      print(size);
-    return ClipRRect(borderRadius:BorderRadius.circular(20), child: Image.network('https://img.freepik.com/fotos-premium/gato-muy-gordo-ia-generativa_138015-2122.jpg',
+    return ClipRRect(borderRadius:BorderRadius.circular(20), child: Image.network(imageUrl,
     width: size.width * 0.6, height: 130,fit: BoxFit.cover,
     loadingBuilder: (context, child, loadingProgress) {
       if(loadingProgress == null) return child; //esto representa que realizo la carga de la imagen y retorna el chil que es ella misma
